@@ -49,7 +49,7 @@ def simkill(threshold,pthreshold):
     kqHP = 250
     resets = 0
     tickcount = 0
-    ptimer = 25
+    ptimer = 30
     regen = 100
     while (kqHP > 0):
         if (tickcount > regen): ## KQ regen 1 per minute
@@ -58,7 +58,7 @@ def simkill(threshold,pthreshold):
                 kqHP += 1
                 ##print("KQ regens 1 hp to: " + str(kqHP))
         if (tickcount > ptimer): ## poison hit one per 15 sec
-            ptimer += 25
+            ptimer += 30
             if (p > 0):
                 kqHP -= p
                 pcount -= 1
