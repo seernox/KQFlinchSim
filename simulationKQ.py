@@ -76,7 +76,7 @@ def simkill(threshold,pthreshold):
             pcount = 2
             p = 6
             tickcount = 0
-            ptimer = 25
+            ptimer = 30
             regen += 100
         if (kqHP <= threshold or p > pthreshold): ##2H hit
             if (random.random() < swordAcc):
@@ -90,7 +90,7 @@ def simkill(threshold,pthreshold):
                 ##print("Spear hit of: " + str(hit) + ", KQ hp: " + str(kqHP))
                 if (random.randint(0,3) == 0):
                     if (p == 0):
-                        ptimer = tickcount + 25
+                        ptimer = tickcount + 30
                         p = 6
                         pcount = 4
         tickcount += 12
@@ -110,7 +110,7 @@ def simkillconsole(threshold,pthreshold):
     kqHP = 250
     resets = 0
     tickcount = 0
-    ptimer = 25
+    ptimer = 30
     regen = 100
     while (kqHP > 0):
         if (tickcount > regen): ## KQ regen 1 per minute
@@ -119,7 +119,7 @@ def simkillconsole(threshold,pthreshold):
                 kqHP += 1
                 print("KQ regens 1 hp to: " + str(kqHP))
         if (tickcount > ptimer): ## poison hit one per 15 sec
-            ptimer += 25
+            ptimer += 30
             if (p > 0):
                 kqHP -= p
                 pcount -= 1
@@ -137,7 +137,7 @@ def simkillconsole(threshold,pthreshold):
             pcount = 2
             p = 6
             tickcount = 0
-            ptimer = 25
+            ptimer = 30
             regen += 100
         if (kqHP <= threshold or p > pthreshold): ##2H hit
             if (random.random() < swordAcc):
@@ -154,7 +154,7 @@ def simkillconsole(threshold,pthreshold):
                 if (random.randint(0,3) == 0):
                     print("repoisoned")
                     if (p == 0):
-                        ptimer = tickcount + 25
+                        ptimer = tickcount + 30
                         p = 6
                         pcount = 4
             else:
