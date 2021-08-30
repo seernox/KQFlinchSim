@@ -46,14 +46,14 @@ def simkill(threshold,pthreshold):
     random.seed()
     pcount = 2
     p = 6
-    kqHP = 250
+    kqHP = 255
     resets = 0
     tickcount = 0
     ptimer = 30
     regen = 100
     while (kqHP > 0):
         if (tickcount > regen): ## KQ regen 1 per minute
-            if (kqHP < 250):
+            if (kqHP < 255):
                 regen += 100
                 kqHP += 1
                 ##print("KQ regens 1 hp to: " + str(kqHP))
@@ -72,7 +72,7 @@ def simkill(threshold,pthreshold):
         if (tickcount >= 2000): ## count if KQ been > 20 mins
             ##print("Over 20 minutes phase 2 resets")
             resets += 1
-            kqHP = 250
+            kqHP = 255
             pcount = 2
             p = 6
             tickcount = 0
@@ -107,14 +107,14 @@ def simkillconsole(threshold,pthreshold):
     random.seed()
     pcount = 2
     p = 6
-    kqHP = 250
+    kqHP = 255
     resets = 0
     tickcount = 0
     ptimer = 30
     regen = 100
     while (kqHP > 0):
         if (tickcount > regen): ## KQ regen 1 per minute
-            if (kqHP < 250):
+            if (kqHP < 255):
                 regen += 100
                 kqHP += 1
                 print("KQ regens 1 hp to: " + str(kqHP))
@@ -133,7 +133,7 @@ def simkillconsole(threshold,pthreshold):
         if (tickcount >= 2000): ## count if KQ been > 20 mins
             print("Over 20 minutes phase 2 resets")
             resets += 1
-            kqHP = 250
+            kqHP = 255
             pcount = 2
             p = 6
             tickcount = 0
