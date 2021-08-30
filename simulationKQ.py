@@ -14,20 +14,19 @@ import numpy as np
 hp = [0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220,230,240,250]
 poison = [0,1,2,3,4,5,6]
 kills = 10000
-spearAcc = 0.1381
-spearMax = 23
-swordAcc = 0.1774
-swordMax = 29
+spearAcc = 0.0867
+spearMax = 14
+swordAcc = 0.1371
+swordMax = 23
 results = []
 X, Y = np.meshgrid(hp, poison)
 Z = X*0
 
 def simulate():
     results.clear()
-    for x in range(len(hp)):
-        for y in range(len(poison)):
-            Z[(y,x)] = avgsimkill(kills, hp[x], poison[y])
-
+    for x in range(len(poison)):
+        for y in range(len(hp)):
+            Z[(x,y)] = avgsimkill(kills, hp[y], poison[x])
 
 def graph():
     if (len(results) == 0):
@@ -38,13 +37,13 @@ def graph():
     ax.set_xlabel("When to finish off with 2H")
     ax.set_ylabel("When to repoison")
     ax.set_zlabel("Average kill time (s)")
-    ax.set_title("KQ kill time D2H & Dspear")
+    ax.set_title("KQ kill time D2H & Mith spear")
     ##fig.colorbar(surf, shrink=0.5, aspect=5)
     plt.show()
 
 def simkill(threshold,pthreshold):
     random.seed()
-    pcount = 2
+    pcount = 3
     p = 6
     kqHP = 255
     resets = 0
@@ -64,7 +63,7 @@ def simkill(threshold,pthreshold):
                 pcount -= 1
                 ##print("poison hit of: " + str(p) + ", KQ hp: " + str(kqHP))
                 if (pcount == 0):
-                    pcount = 4
+                    pcount = 5
                     p -= 1
         if (kqHP <= 0):
             ##print("KQ killed by poison")
@@ -73,7 +72,7 @@ def simkill(threshold,pthreshold):
             ##print("Over 20 minutes phase 2 resets")
             resets += 1
             kqHP = 255
-            pcount = 2
+            pcount = 3
             p = 6
             tickcount = 0
             ptimer = 30
@@ -91,8 +90,8 @@ def simkill(threshold,pthreshold):
                 if (random.randint(0,3) == 0):
                     if (p == 0):
                         ptimer = tickcount + 30
-                        p = 6
-                        pcount = 4
+                    p = 6
+                    pcount = 5
         tickcount += 12
     return ((tickcount + (resets *2000))*0.6)
 
@@ -105,7 +104,7 @@ def avgsimkill(kills, threshold, pthreshold):
 
 def simkillconsole(threshold,pthreshold):
     random.seed()
-    pcount = 2
+    pcount = 3
     p = 6
     kqHP = 255
     resets = 0
@@ -125,7 +124,7 @@ def simkillconsole(threshold,pthreshold):
                 pcount -= 1
                 print("poison hit of: " + str(p) + ", KQ hp: " + str(kqHP))
                 if (pcount == 0):
-                    pcount = 4
+                    pcount = 5
                     p -= 1
         if (kqHP <= 0):
             print("KQ killed by poison")
@@ -134,7 +133,7 @@ def simkillconsole(threshold,pthreshold):
             print("Over 20 minutes phase 2 resets")
             resets += 1
             kqHP = 255
-            pcount = 2
+            pcount = 3
             p = 6
             tickcount = 0
             ptimer = 30
@@ -155,8 +154,9 @@ def simkillconsole(threshold,pthreshold):
                     print("repoisoned")
                     if (p == 0):
                         ptimer = tickcount + 30
-                        p = 6
-                        pcount = 4
+                    p = 6
+                    pcount = 5
+                        
             else:
                 print("Spear misses")
         tickcount += 12
